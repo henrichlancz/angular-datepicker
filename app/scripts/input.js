@@ -82,14 +82,10 @@ Module.directive('dateTime', ['$compile', '$document', '$filter', 'dateTimeConfi
       }
 
       function parser(viewValue) {
-        if (!viewValue) {
-          return '';
-        }
-        var parsed = moment(viewValue, format);
-        if (parsed.isValid()) {
-          return parsed;
-        }
-      }
+        var momentDate = moment(viewValue, format);
+             
+       return momentDate.isValid() ? momentDate : undefined;
+    }
 
       function setMin(date) {
         minDate = date;
